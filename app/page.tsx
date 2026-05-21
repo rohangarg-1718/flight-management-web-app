@@ -1,5 +1,8 @@
 import FlightCard from "@/components/flight/FlightCard";
 import FlightSearch from "@/components/flight/FlightSearch";
+import FlightList from "@/components/flight/FlightList";
+import FeaturedDestinations from "@/components/flight/FeaturedDestinations";
+
 import { supabase } from "@/lib/supabaseClient";
 
 import SeatMap from "@/components/booking/SeatMap";
@@ -9,6 +12,11 @@ import MyBookings from "@/components/booking/MyBookings";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
+import AuthModal from "@/components/auth/AuthModal";
+import UserStatus from "@/components/auth/UserStatus";
+
+import { useSearchStore } from "@/store/searchStore";
+
 export default async function Home() {
 
   const { data: flights } = await supabase
@@ -16,13 +24,15 @@ export default async function Home() {
     .select("*")
     .order("departs_at", { ascending: true });
 
+  const filteredFlights = flights;
+
   return (
     <main className="min-h-screen bg-slate-950 text-white">
       <Navbar />
-      <section className="max-w-7xl mx-auto px-6 py-20">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-16 md:py-20 overflow-hidden">
 
         <div className="text-center space-y-6">
-          <h1 className="text-5xl md:text-7xl font-bold leading-tight">
+          <h1 className="text-4xl md:text-7xl font-bold leading-tight break-words">
             Flight Management
             <span className="text-cyan-400"> Web App</span>
           </h1>
@@ -33,7 +43,7 @@ export default async function Home() {
             seat updates with a modern aviation platform.
           </p>
 
-          <div className="flex items-center justify-center gap-4 pt-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
             <button className="bg-cyan-500 hover:bg-cyan-400 transition px-6 py-3 rounded-xl font-semibold text-black">
               Search Flights
             </button>
@@ -45,6 +55,12 @@ export default async function Home() {
         </div>
 
         <FlightSearch />
+
+        <FeaturedDestinations />
+
+        <AuthModal />
+
+        <UserStatus />
 
         <div className="grid md:grid-cols-3 gap-6 mt-20">
 
@@ -83,19 +99,7 @@ export default async function Home() {
 
         </div>
 
-        <div className="mt-16 grid gap-6">
-
-          {flights?.map((flight) => (
-            <FlightCard
-              key={flight.id}
-              flightNo={flight.flight_no}
-              origin={flight.origin}
-              destination={flight.destination}
-              price={flight.base_price}
-            />
-          ))}
-
-        </div>
+        <FlightList flights={flights || []} />
 
         <SeatMap />
         

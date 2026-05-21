@@ -1,12 +1,28 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-interface FlightStore {
-  selectedFlight: any;
-  selectedSeat: any;
+interface SelectedFlight {
+  id: string;
+  flightNo: string;
+  origin: string;
+  destination: string;
+  price: number;
+}
 
-  setSelectedFlight: (flight: any) => void;
-  setSelectedSeat: (seat: any) => void;
+interface SelectedSeat {
+  id?: string;
+  seatNumber: string;
+  seatClass?: string;
+  fee?: number;
+  status?: string;
+}
+
+interface FlightStore {
+  selectedFlight: SelectedFlight | null;
+  selectedSeat: SelectedSeat | null;
+
+  setSelectedFlight: (flight: SelectedFlight) => void;
+  setSelectedSeat: (seat: SelectedSeat) => void;
 
   resetBooking: () => void;
 }
@@ -18,10 +34,12 @@ export const useFlightStore = create<FlightStore>()(
       selectedSeat: null,
 
       setSelectedFlight: (flight) =>
-        set({ selectedFlight: flight }),
+        set({
+          selectedFlight: flight,
+          selectedSeat: null,
+        }),
 
-      setSelectedSeat: (seat) =>
-        set({ selectedSeat: seat }),
+      setSelectedSeat: (seat) => set({ selectedSeat: seat }),
 
       resetBooking: () =>
         set({

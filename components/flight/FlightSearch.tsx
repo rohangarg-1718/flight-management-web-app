@@ -1,5 +1,7 @@
 "use client";
 
+import { useSearchStore } from "@/store/searchStore";
+
 import { useState } from "react";
 
 export default function FlightSearch() {
@@ -9,16 +11,20 @@ export default function FlightSearch() {
         date: "",
     });
 
+    const setSearchQuery = useSearchStore(
+        (state) => state.setSearchQuery
+    );
+
     const [submitted, setSubmitted] = useState(false);
     const [loading, setLoading] = useState(false);
 
     return (
-        <div className="mt-16 rounded-2xl border border-slate-800 bg-slate-900 p-6">
+        <div className="mt-16 rounded-2xl border border-slate-800 bg-slate-900 p-4 sm:p-6 overflow-hidden">
             <h2 className="mb-6 text-2xl font-semibold">
                 Search Flights
             </h2>
 
-            <div className="grid gap-4 md:grid-cols-4">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
 
                 <input
                     type="text"
@@ -27,7 +33,7 @@ export default function FlightSearch() {
                     onChange={(e) =>
                         setSearch({ ...search, origin: e.target.value })
                     }
-                    className="rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 outline-none"
+                    className="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 outline-none"
                 />
 
                 <input
@@ -56,11 +62,14 @@ export default function FlightSearch() {
                         setTimeout(() => {
                             setLoading(false);
                             setSubmitted(true);
+
+                            setSearchQuery(search);
+
                         }, 1200);
                     }}
-                    className="rounded-xl bg-cyan-400 px-6 py-3 font-semibold text-black"
+                    className="w-full rounded-xl bg-cyan-400 px-6 py-3 font-semibold text-black"
                 >
-                   {loading ? "Searching..." : "Search"}
+                    {loading ? "Searching..." : "Search"}
                 </button>
 
             </div>

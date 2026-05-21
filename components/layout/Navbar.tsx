@@ -13,15 +13,19 @@ export default function Navbar() {
                 </div>
 
                 <div className="flex items-center gap-3">
-
-                    <button className="rounded-xl border border-slate-700 px-4 py-2 text-sm hover:border-cyan-400">
+                    <a
+                        href="#auth"
+                        className="rounded-xl border border-slate-700 px-4 py-2 text-sm hover:border-cyan-400"
+                    >
                         Sign Up
-                    </button>
+                    </a>
 
-                    <button className="rounded-xl bg-cyan-400 px-4 py-2 text-sm font-semibold text-black">
+                    <a
+                        href="#auth"
+                        className="rounded-xl bg-cyan-400 px-4 py-2 text-sm font-semibold text-black"
+                    >
                         Login
-                    </button>
-
+                    </a>
                 </div>
             </div>
         </nav>
