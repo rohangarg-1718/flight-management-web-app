@@ -61,6 +61,23 @@ Supabase tables used:
 
 The app uses Supabase RLS policies, RPC functions, and database triggers for secure booking and seat management.
 
+## Zustand Store Structure
+
+The application uses Zustand for lightweight global state management.
+
+### Stores Used
+
+- `flightStore`
+  - Stores selected flight and seat
+  - Handles booking reset functionality
+  - Persisted using Zustand middleware
+
+- `searchStore`
+  - Stores search filters like origin, destination, and date
+  - Used for dynamic flight filtering
+
+The stores use Zustand `persist` middleware to maintain state across page refreshes.
+
 ## Project Status
 
 Core assignment features are implemented, including authentication, booking flow, realtime seat availability, cancellation, reschedule UI, and responsive design.
