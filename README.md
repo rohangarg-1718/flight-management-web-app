@@ -81,3 +81,9 @@ The stores use Zustand `persist` middleware to maintain state across page refres
 ## Project Status
 
 Core assignment features are implemented, including authentication, booking flow, realtime seat availability, cancellation, reschedule UI, and responsive design.
+
+## Lighthouse PWA Audit
+
+PWA Lighthouse score achieved above 90 in production build.
+
+![Lighthouse Screenshot](./lighthouse-score.png)
