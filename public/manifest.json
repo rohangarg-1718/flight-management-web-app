@@ -1,6 +1,6 @@
 {
-  "name": "Flight Management Web App",
-  "short_name": "FlightApp",
+  "name": "SkyRoute India",
+  "short_name": "SkyRoute",
   "description": "Modern realtime flight booking web application",
   "start_url": "/",
   "display": "standalone",
