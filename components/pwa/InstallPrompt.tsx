@@ -55,7 +55,7 @@ export default function InstallPrompt() {
   return (
     <div className="fixed bottom-5 left-1/2 z-50 w-[90%] max-w-md -translate-x-1/2 rounded-2xl border border-cyan-500/30 bg-slate-900 p-5 shadow-2xl">
       <h3 className="text-lg font-semibold text-white">
-        Install Flight App
+        Install SkyRoute India
       </h3>
 
       <p className="mt-2 text-sm text-slate-400">
