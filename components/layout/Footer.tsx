@@ -13,7 +13,7 @@ export default function Footer() {
         </p>
 
         <p className="mt-4 text-slate-500">
-          © 2026 SkyrouteIndia. All rights reserved.
+          © 2026 SkyRouteIndia. All rights reserved.
         </p>
 
       </div>
