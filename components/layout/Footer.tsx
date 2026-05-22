@@ -4,7 +4,7 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-6 py-8 text-center text-sm text-slate-400">
 
         <p className="text-base">
-          Flight<span className="text-cyan-400">Pro</span>
+          SkyRoute<span className="text-cyan-400"> India</span>
         </p>
 
         <p className="mt-2">
@@ -13,7 +13,7 @@ export default function Footer() {
         </p>
 
         <p className="mt-4 text-slate-500">
-          © 2026 FlightPro. All rights reserved.
+          © 2026 SkyrouteIndia. All rights reserved.
         </p>
 
       </div>
